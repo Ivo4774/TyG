@@ -1,103 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnología y Gestión Web</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="images/logo.webp">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TP2 - Actores y Películas</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/logo.webp" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <img src="images/logo.webp" alt="Logo" width="50">
-        <div class="header-text">
-            <h1>Trabajo Práctico Nº1</h1>
-            <p>Balduzzi, Ivo</p>
-        </div>
-    </header>
-    
-    <div class="container">
-        <aside>
-            <nav>
-                <ul>
-                    <li><a href="#" id="btn-gato">Ver gatito</a></li>
-                    <li><a href="#" id="btn-dato">Dato curioso</a></li>
-                    <li><a href="#" id="btn-frase">Nueva frase</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <main>
-            <div id="frase-del-dia"></div>
-            <hr>
-            <p class="expectativa">Aprender y desarrollar conocimiento en tecnologias nuevas y usadas</p>
-            <hr>
-            <section id="contenido-api"></section> 
-        </main>
+  <header>
+    <img src="images/logo.webp" alt="Logo" width="50" />
+    <div class="header-text">
+      <h1>Trabajo Práctico Nº2</h1>
+      <p>Balduzzi, Ivo</p>
+    </div>
+  </header>
+
+    <div id="app">
+    <button @click="loadData">Cargar películas en Strapi</button>
+    <button @click="showResults">Mostrar resultados</button>
+    <table v-if="showTable">
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Sinopsis</th>
+            <th>Géneros</th>
+            <th>Votos</th>
+            <th>Promedio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="movie in movies">
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.overview }}</td>
+            <td>{{ movie.genres }}</td>
+            <td>{{ movie.vote_count }}</td>
+            <td>{{ movie.vote_average }}</td>
+        </tr>
+        </tbody>
+    </table>
     </div>
 
-    <footer>
-        <p>Tecnología y Gestión Web | 2025</p>
-    </footer>
+  <div class="container">
+    <aside>
+      <nav>
+        <ul>
+          <li><a href="#" id="btn-cargar">Cargar datos y guardar en Strapi</a></li>
+          <li><a href="#" id="btn-visualizar">Visualizar datos guardados</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <hr />
+      <p class="expectativa">Aprender y desarrollar conocimiento en tecnologías nuevas y usadas</p>
+      <hr />
+      <section id="contenido-api"></section>
+    </main>
+  </div>
 
-    <script>
-        const frases = [
-            '<span class="sombra1">"La vida antes que la muerte, la fuerza antes que la debilidad, el viaje antes que el destino."</span>',
-            '<span class="sombra2">"A veces un hombre debe romper su promesa para hacer lo correcto."</span>',
-            '<span class="sombra3">"La gloria se otorga solo a aquellos que la buscan con humildad."</span>'
-        ];
+  <footer>
+    <p>Tecnología y Gestión Web | 2025</p>
+  </footer>
 
-        function mostrarFraseAleatoria() {
-            const randomIndex = Math.floor(Math.random() * frases.length);
-            document.getElementById("frase-del-dia").innerHTML = frases[randomIndex];
-        }
-
-        mostrarFraseAleatoria();
-
-        document.getElementById("btn-frase").addEventListener("click", (e) => {
-            e.preventDefault();
-            mostrarFraseAleatoria();
-        });
-    </script>
-
-    <script>
-        document.getElementById("btn-gato").addEventListener("click", async (e) => {
-            e.preventDefault();
-            document.getElementById("contenido-api").innerHTML = `<p class="loading">Cargando gatito...</p>`;
-            try {
-                const response = await fetch("https://api.thecatapi.com/v1/images/search");
-                const data = await response.json();
-                const imageUrl = data[0].url;
-
-                document.getElementById("contenido-api").innerHTML = `
-                    <h2>Gatito aleatorio 🐱</h2>
-                    <img src="${imageUrl}" alt="Gatito adorable" style="max-width: 100%; border-radius: 10px;">
-                `;
-            } catch (error) {
-                console.error("Error:", error);
-                document.getElementById("contenido-api").innerHTML = `<p>Error al cargar el gatito.</p>`;
-            }
-        });
-    </script>
-
-    <script>
-        document.getElementById("btn-dato").addEventListener("click", async (e) => {
-            e.preventDefault();
-            document.getElementById("contenido-api").innerHTML = `<p class="loading">Cargando dato curioso...</p>`;
-            try {
-                const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random?language=es");
-                const data = await response.json();
-
-                document.getElementById("contenido-api").innerHTML = `
-                    <h2>Dato Curioso 🌍</h2>
-                    <p>"${data.text}"</p>
-                `;
-            } catch (error) {
-                console.error("Error:", error);
-                document.getElementById("contenido-api").innerHTML = `<p>Error al obtener el dato curioso.</p>`;
-            }
-        });
-    </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
