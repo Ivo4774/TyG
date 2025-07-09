@@ -17,41 +17,18 @@
     </div>
   </header>
 
-    <div id="app">
-    <button @click="loadData">Cargar películas en Strapi</button>
-    <button @click="showResults">Mostrar resultados</button>
-    <table v-if="showTable">
-        <thead>
-        <tr>
-            <th>Título</th>
-            <th>Sinopsis</th>
-            <th>Géneros</th>
-            <th>Votos</th>
-            <th>Promedio</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="movie in movies">
-            <td>{{ movie.title }}</td>
-            <td>{{ movie.overview }}</td>
-            <td>{{ movie.genres }}</td>
-            <td>{{ movie.vote_count }}</td>
-            <td>{{ movie.vote_average }}</td>
-        </tr>
-        </tbody>
-    </table>
-    </div>
-
   <div class="container">
     <aside>
       <nav>
         <ul>
           <li><a href="#" id="btn-cargar">Cargar datos y guardar en Strapi</a></li>
           <li><a href="#" id="btn-visualizar">Visualizar datos guardados</a></li>
+          <li><a href="#" id="btn-frase">Nueva frase</a></li>
         </ul>
       </nav>
     </aside>
     <main>
+      <div id="frase-del-dia"></div>
       <hr />
       <p class="expectativa">Aprender y desarrollar conocimiento en tecnologías nuevas y usadas</p>
       <hr />
@@ -63,6 +40,8 @@
     <p>Tecnología y Gestión Web | 2025</p>
   </footer>
 
+  <!-- Vue solo si lo necesita otro compañero -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <script src="scripts.js"></script>
 </body>
 </html>
