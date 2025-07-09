@@ -3,7 +3,7 @@ const tokenApi = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MTZkMjY2YTY0ZDRjZDUzYTA0ZGUxN
 const tokenStrapi = "099da4cc6cbb36bf7af8de6f1f241f8c81e49fce15709c4cfcae1313090fa2c1ac8703b0179863b4eb2739ea65ae435e90999adb870d49f9f94dcadd88999763119edca01a6b34c25be92a80ed30db1bcacb20df40e4e7f45542bd501f059201ad578c18a11e4f5cd592cb25d6c31a054409caa99f11b6d2391440e9c72611ea";
 
 const apiURLPeliculas = "https://api.themoviedb.org/3/discover/movie?primary_release_year=1999&sort_by=popularity.desc";
-const apiURLStrapi = "https://gestionweb.frlp.utn.edu.ar/api/g11-peliculas"; // Cambiar g11 si corresponde
+const apiURLStrapi = "https://gestionweb.frlp.utn.edu.ar/api/g1-peliculas"; 
 const genreAPIURL = "https://api.themoviedb.org/3/genre/movie/list?language=es";
 
 // Headers para TMDb
