@@ -12,7 +12,7 @@ body {
 
 /* Header */
 header {
-    background-color: rgba(30, 60, 90, 0.8); 
+    background-color: rgba(58, 60, 75, 0.8); 
     padding: 15px 30px;
     display: flex;
     align-items: center;
@@ -53,7 +53,7 @@ p {
 aside {
     width: 100%;
     max-width: 280px;
-    background-color: rgba(60, 100, 140, 0.9);
+    background-color: rgba(114, 129, 144, 0.9);
     padding: 20px;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -93,15 +93,13 @@ main {
     word-wrap: break-word; 
 }
 
-}
-
 .expectativa {
     font-style: italic;
     font-size: 18px;
     margin-top: 20px;
     background-color: rgba(255,255,255,0.05);
     padding: 15px;
-    border-left: 4px solid #90caf9;
+    border-left: 4px solid #deedf9;
 }
 #contenido-api img {
     max-width: 100%;       
